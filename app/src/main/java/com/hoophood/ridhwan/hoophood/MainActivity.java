@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,10 +44,12 @@ public class MainActivity extends AppCompatActivity {
                                     int position, long id) {
 
                 // Sending image id to FullScreenActivity
-                Intent i = new Intent(getApplicationContext(), FullImageActivity.class);
+                Uri gmmIntentUri = Uri.parse("geo:37.7749,-122.4194");
+                Intent i = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 // passing array index
-                i.putExtra("id", position);
+                i.setPackage("com.google.android.apps.maps");
                 startActivity(i);
+
             }
         });
 
